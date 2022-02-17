@@ -15,9 +15,12 @@ function loadDoc() {
     document.getElementById("car").innerHTML = this.status + this.readyState;
     if (this.readyState == 4 && this.status == 200) {
       const obj = JSON.parse(this.response)
-      // var number = `${obj.weather[0].icon}`
-
-      document.getElementById("car").innerHTML = "hogehoge";
+      var cars = obj.data
+      let cars_name = [];
+      for (let car of cars) {
+        cars_name.push(car.maker + " " + car.model + " " + car.make_year);
+      }
+      document.getElementById("car").innerHTML = cars_name;
     }
   };
 
